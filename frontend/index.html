@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HireLock — live demo (Arbitrum Sepolia)</title>
+<style>
+  body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; color: #1a1a1a; }
+  h1 { font-size: 1.5rem; }
+  .card { border: 1px solid #ddd; border-radius: 12px; padding: 1rem 1.25rem; margin: 1rem 0; }
+  .muted { color: #666; font-size: .9rem; }
+  table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+  td { padding: .35rem .25rem; border-bottom: 1px solid #eee; vertical-align: top; }
+  td:first-child { color: #666; width: 38%; }
+  code { font-size: .85rem; word-break: break-all; }
+  input, button { font-size: 1rem; padding: .45rem .6rem; border-radius: 8px; border: 1px solid #ccc; }
+  button { cursor: pointer; background: #111; color: #fff; border-color: #111; }
+  .status { display: inline-block; padding: .1rem .5rem; border-radius: 999px; background: #eef; font-size: .85rem; }
+  #err { color: #b00; }
+</style>
+</head>
+<body>
+  <h1>🔒 HireLock — live demo</h1>
+  <p class="muted">Trustless escrow for hiring. Read-only view of the live contract on
+  <strong>Arbitrum Sepolia</strong>. No wallet needed.</p>
+
+  <div class="card">
+    <div>Contract: <code id="addr"></code></div>
+    <div>Jobs created: <strong id="count">…</strong></div>
+    <div class="muted" id="net">Connecting…</div>
+    <div id="err"></div>
+  </div>
+
+  <div class="card">
+    <label>Job ID
+      <input id="jobId" type="number" min="0" value="1" style="width: 5rem">
+    </label>
+    <button id="load">Load job</button>
+    <button id="prev">←</button>
+    <button id="next">→</button>
+    <div id="job" style="margin-top:.75rem"></div>
+  </div>
+
+  <p class="muted">Rebuild: <code>~/workspace/hirelock</code> · 12/15 selectors match
+  the live contract (see <code>SELECTOR_CHECK.md</code>). Source of the live
+  contract was never verified — this demo reads it through its reconstructed ABI.</p>
+
+  <script src="ethers.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
